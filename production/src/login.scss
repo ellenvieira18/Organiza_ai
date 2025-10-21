@@ -1,5 +1,5 @@
 // Cores principais
-$primary-color: #7b2ff7;
+$primary-color: #1B0060;
 $secondary-color: #f107a3;
 $text-color: #333;
 $light-gray: #999;
@@ -31,6 +31,14 @@ body {
     font-size: 1.8rem;
     color: $text-color;
     font-weight: 700;
+    font-family: "League Spartan", sans-serif;
+  }
+
+  p{
+    font-size: 1.8rem;
+    color: $text-color;
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
   }
 
   .subtitle {
@@ -81,7 +89,7 @@ body {
       font-weight: 600;
       cursor: pointer;
       border: 2px solid transparent;
-      background: linear-gradient(to right, $primary-color, $secondary-color);
+      background: $primary-color;
       color: #fff;
       transition: 0.3s ease;
 
