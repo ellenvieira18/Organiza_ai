@@ -11,16 +11,10 @@ import { Router, RouterModule } from '@angular/router';
 export class Home {
   constructor(private router: Router) {}
 
-  goTo(page: string) {
+  goTo(page: string, categorias: string='') {
     switch (page) {
-      case 'trabalho':
-        this.router.navigate(['/trabalho']);
-        break;
-      case 'estudos':
-        this.router.navigate(['/estudos']);
-        break;
-      case 'pessoal':
-        this.router.navigate(['/pessoal']);
+      case 'categorias':
+        this.router.navigate(['/categorias', categorias]);
         break;
       case 'visao-geral':
         this.router.navigate(['/visao-geral']);

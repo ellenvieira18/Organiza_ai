@@ -1,0 +1,67 @@
+//Paleta de cores
+$roxo-principal: #c43fff;
+$branco: #ffffff;
+
+//Estrutura principal
+.tela {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $branco;
+  height: 95vh;
+  width: 95vw;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+}
+
+//Barra superior
+.topo {
+  width: 104%;
+  height: 70px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+//Conteúdo central
+.conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+
+  .title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    margin-top: 60px;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    button {
+      width: 300px;
+      padding: 15px 0;
+      border: 2px solid $roxo-principal;
+      background-color: transparent;
+      color: $roxo-principal;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: $roxo-principal;
+        color: $branco;
+        transform: scale(1.05);
+      }
+    }
+  }
+}
