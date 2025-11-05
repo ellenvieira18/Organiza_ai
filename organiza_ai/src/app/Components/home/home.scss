@@ -1,0 +1,75 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #fff;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+
+  h2 {
+    color: #1e1e1e;
+    font-weight: 700;
+    margin-bottom: 40px;
+    font-size: 1.8rem;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .btn {
+      width: 220px;
+      height: 45px;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background-color: transparent;
+
+      &.trabalho {
+        border: 2px solid #d64bff;
+        color: #d64bff;
+
+        &:hover {
+          background-color: #d64bff;
+          color: #fff;
+        }
+      }
+
+      &.estudos {
+        border: 2px solid #4b8cff;
+        color: #4b8cff;
+
+        &:hover {
+          background-color: #4b8cff;
+          color: #fff;
+        }
+      }
+
+      &.pessoal {
+        border: 2px solid #ff4bb0;
+        color: #ff4bb0;
+
+        &:hover {
+          background-color: #ff4bb0;
+          color: #fff;
+        }
+      }
+
+      &.visao-geral {
+        border: 2px solid #1e1e1e;
+        color: #1e1e1e;
+        margin-top: 20px;
+
+        &:hover {
+          background-color: #1e1e1e;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
