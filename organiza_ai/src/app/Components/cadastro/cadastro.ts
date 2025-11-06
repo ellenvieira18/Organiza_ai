@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
@@ -7,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrl: './cadastro.scss'
 })
 export class Cadastro {
+  // navegação
+  constructor(private router: Router) {}
+  abrirHome(){
 
+    this.router.navigate(['/login'])
+  }
+  abrirLogin(){}
 }

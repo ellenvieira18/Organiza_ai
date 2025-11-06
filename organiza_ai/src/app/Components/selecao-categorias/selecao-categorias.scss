@@ -1,5 +1,4 @@
 //Paleta de cores
-$roxo-principal: #c43fff;
 $branco: #ffffff;
 
 //Estrutura principal
@@ -48,7 +47,7 @@ $branco: #ffffff;
     button {
       width: 300px;
       padding: 15px 0;
-      border: 2px solid $roxo-principal;
+      border: 2px solid;
       background-color: transparent;
       // color: $roxo-principal;
       font-size: 1.1rem;
@@ -57,11 +56,33 @@ $branco: #ffffff;
       cursor: pointer;
       transition: all 0.3s ease;
 
-      &:hover {
-        background-color: $roxo-principal;
-        color: $branco;
-        transform: scale(1.05);
-      }
     }
   }
 }
+   .button-trabalho{
+    color:#c43fff;
+    border-color: #c43fff;
+    &:hover {
+        background-color:#c43fff !important;
+        color: $branco;
+        transform: scale(1.05);
+      }
+   } 
+   .button-estudo{
+    color:#3A8EFF;
+    border-color: #3A8EFF;
+    &:hover {
+        background-color:#3A8EFF !important;
+        color: $branco;
+        transform: scale(1.05);
+      }
+   }
+   .button-pessoal{
+    color:#FF37A9;
+    border-color: #FF37A9;
+    &:hover {
+        background-color:#FF37A9 !important;
+        color: $branco;
+        transform: scale(1.05);
+      }
+   }
