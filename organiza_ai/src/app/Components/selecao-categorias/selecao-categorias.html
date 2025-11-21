@@ -11,11 +11,16 @@
         <!-- fazer o mesmo com os buttons [style.o que foi usado no style]="corCategoria" -->
         <div class="title" [style.color]="corCategoria">{{categorias}}</div>
         
-        <div class="buttons">
+        <!-- <div class="buttons">
             <button [class]="classeCategoria">Agenda</button>
             <button [class]="classeCategoria">Tarefas</button>
             <button [class]="classeCategoria">Notas</button>
-        </div>
+        </div> -->
+
+         <mat-card class="demo-inline-calendar-card">
+            <mat-calendar [(selected)]="selected"></mat-calendar>
+        </mat-card>
+
     </div>
 </div> 
 
