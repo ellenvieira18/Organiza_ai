@@ -1,10 +1,25 @@
+.tela{
+  .topo{
+    width: 100%;
+    height: 10%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color:#6b21a8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+  }
+}
+
 .home-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #fff;
+  // background-color: #fff;
   font-family: 'Poppins', sans-serif;
   text-align: center;
 
@@ -61,12 +76,12 @@
       }
 
       &.visao-geral {
-        border: 2px solid #1e1e1e;
-        color: #1e1e1e;
+        border: 2px solid #6b21a8;
+        color: #6b21a8;
         margin-top: 20px;
 
         &:hover {
-          background-color: #1e1e1e;
+          background-color: #6b21a8;
           color: #fff;
         }
       }
