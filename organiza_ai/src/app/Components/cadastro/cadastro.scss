@@ -1,11 +1,18 @@
-// Cores principais
-$primary-color: #1B0060;
-$secondary-color: #f107a3;
-$text-color: #333;
-$light-gray: #999;
-$border-color: #999;
+.tela{
+  .topo{
+    width: 100%;
+    height: 10%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color:#6b21a8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+  }
+}
 
-// Estilos gerais
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +21,6 @@ $border-color: #999;
 }
 
 body {
-  background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,46 +28,59 @@ body {
 }
 
 .container {
+   display: flex;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
   text-align: center;
-  width: 90%;
-  max-width: 400px;
-  padding: 2rem;
-
+  justify-content: center;
+  flex-direction: column;
+  
   h1 {
     font-size: 1.8rem;
-    color: $text-color;
+    color: black;
     font-weight: 700;
     font-family: "League Spartan", sans-serif;
   }
 
   p{
     font-size: 1.8rem;
-    color: $text-color;
+    color: black;
     font-weight: 700;
     font-family: "Poppins", sans-serif;
   }
 
   .subtitle {
     font-size: 1rem;
-    color: $text-color;
+    color: black;
     margin-top: 0.3rem;
     font-weight: 500;
   }
 
-  .login-text {
-    font-size: 0.9rem;
-    color: $light-gray;
-    margin: 0.5rem 0 1.5rem;
+  .possuiConta {
+       text-align: left;
+     margin: 0.5rem 0 1.5rem;
+     text-decoration: none;
+     font-size: 0.9rem;
+     color: #6b21a8;
+     transition: 0.2s;
 
-    a {
-      color: $text-color;
-      font-weight: 600;
-      text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+    // font-size: 0.9rem;
+    // color:lightgrey;
+    // margin: 0.5rem 0 1.5rem;
 
-      &:hover {
-        color: $primary-color;
-      }
-    }
+    // a {
+    //   color: black;
+    //   font-weight: 600;
+    //   text-decoration: none;
+
+    //   &:hover {
+    //     color: #6b21a8;
+    //   }
+    // }
   }
 
   .form {
@@ -71,30 +90,28 @@ body {
 
     input {
       padding: 0.9rem;
-      border: 1px solid $border-color;
+      border: 1.5px solid #a8a8a8;
       border-radius: 8px;
       font-size: 1rem;
       outline: none;
-      transition: border 0.2s;
-
-      &:focus {
-        border-color: $primary-color;
-      }
+      color: #333333;
     }
 
     button {
-      padding: 0.9rem;
+      margin-top: 0.5rem;
+      padding: 0.8rem;
       border-radius: 25px;
       font-size: 1rem;
-      font-weight: 600;
+      font-weight: 500;
       cursor: pointer;
-      border: 2px solid transparent;
-      background: $primary-color;
-      color: #fff;
-      transition: 0.3s ease;
+      background-color: transparent;
+      border: 1.8px solid #6b21a8;
+      color: #6b21a8;
+      transition: all 0.3s ease;
 
       &:hover {
-        opacity: 0.9;
+        background-color: #6b21a8;
+        color: #fff;
         transform: scale(1.02);
       }
     }

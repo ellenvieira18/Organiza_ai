@@ -5,8 +5,8 @@ import { Home } from '../app/Components/home/home';
 import { SelecaoCategorias } from './Components/selecao-categorias/selecao-categorias';
 
 export const routes: Routes = [
-    { path: '', component: Login },
-    // { path: '', component: Cadastro },
+    { path: 'login', component: Login },
+    { path: 'cadastro', component: Cadastro },
     { path: 'home', component: Home }, 
     { path: 'categorias/:categorias', component: SelecaoCategorias}
 ];

@@ -1,12 +1,32 @@
-<div class="container">
-    <h1>Bem vindo de volta</h1>
-    <p class="subtitle">Novo no ORGANIZA.AI? Inscreva-se gratuitamente</p>
-   
+<div class="tela">
+  <div class="topo"></div>
 
-    <form class="form">
-      <input type="email" placeholder="Digite o endereço de email" required />
-      <input type="password" placeholder="Senha" required />
-      <p class="forgot-password"><a href="esqueci-senha.html">Esqueci a senha</a></p>
-      <button type="submit" (click)="abrirHome()" >Entrar</button>
-    </form>
+  <div class="container">
+  <h1>Bem vindo de volta</h1>
+  <a class="abrirCadastro" (click)="abrirCadastro()">Não possui conta? Inscreva-se gratuitamente</a>
+  <form class="form" (ngSubmit)="abrirHome()">
+    <input 
+      type="email" 
+      id="email" 
+      placeholder="Digite o endereço de email" 
+      [(ngModel)]="email" 
+      name="email"
+      required
+    />
+
+    <input 
+      type="password" 
+      placeholder="Senha" 
+      [(ngModel)]="senha" 
+      name="senha"
+      required
+    />
+
+    <p class="forgot-password">
+      <a href="esqueci-senha.html">Esqueci a senha</a>
+    </p>
+
+    <button type="submit"(click)="abrirHome()">Entrar</button>
+  </form>
   </div>
+</div>
