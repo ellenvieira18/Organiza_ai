@@ -9,7 +9,18 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatTimepickerModule} from '@angular/material/timepicker';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {
+  MAT_DATE_FORMATS,
+  MAT_NATIVE_DATE_FORMATS,
+} from '@angular/material/core';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import { HorarioDialog } from '../horario-dialog/horario-dialog';
 
+
+export interface DialogData {
+  selectedDate: Date;
+}
 
 @Component({
   selector: 'app-selecao-categorias',
@@ -28,7 +39,9 @@ export class SelecaoCategorias {
   classeCategoria: string=""
 
   selected = model<Date | null>(null);
- constructor(private activateRoute: ActivatedRoute) {
+ constructor(private activateRoute: ActivatedRoute)
+ 
+ {
   this.activateRoute.params.subscribe((params) => {
     this.categorias=params['categorias']
     this.corCategoria=CorCategoria_e[this.categorias as keyof typeof CorCategoria_e]
@@ -36,70 +49,22 @@ export class SelecaoCategorias {
     this.classeCategoria=ClasseCatogotia_e[this.categorias as keyof typeof ClasseCatogotia_e]
     
   })
+
  }
+
+dialog = inject(MatDialog);
+
+  selectedDate = model<Date | null>(null);
+
+  openDialog() {
+    
+    const dialogRef = this.dialog.open(HorarioDialog, {
+      data: {selectedDate: this.selectedDate()},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.selectedDate.set(result);
+    });
+  }
 }
-export class TimepickerDatepickerIntegrationExample {
-  value: Date | null = null;
-  constructor() {}
-}
-
-
-
-// export interface DialogData {
-//   animal: string;
-//   name: string;
-// }
-
-// /**
-//  * @title Dialog Overview
-//  */
-// @Component({
-//   selector: 'dialog-overview-example',
-//   templateUrl: './selecao-categorias.html',
-//   imports: [MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule],
-//   changeDetection: ChangeDetectionStrategy.OnPush,
-// })
-// export class DialogOverviewExample {
-//   readonly animal = signal('');
-//   readonly name = model('');
-//   readonly dialog = inject(MatDialog);
-
-//   openDialog(): void {
-//     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-//       data: {name: this.name(), animal: this.animal()},
-//     });
-
-//     dialogRef.afterClosed().subscribe(result => {
-//       console.log('The dialog was closed');
-//       if (result !== undefined) {
-//         this.animal.set(result);
-//       }
-//     });
-//   }
-// }
-
-// @Component({
-//   selector: 'dialog-overview-example-dialog',
-//   templateUrl: './selecao-categorias.html',
-//   imports: [
-//     MatFormFieldModule,
-//     MatInputModule,
-//     FormsModule,
-//     MatButtonModule,
-//     MatDialogTitle,
-//     MatDialogContent,
-//     MatDialogActions,
-//     MatDialogClose,
-//   ],
-// })
-// export class DialogOverviewExampleDialog {
-//   readonly dialogRef = inject(MatDialogRef<DialogOverviewExampleDialog>);
-//   readonly data = inject<DialogData>(MAT_DIALOG_DATA);
-//   readonly animal = model(this.data.animal);
-
-//   onNoClick(): void {
-//     this.dialogRef.close();
-//   }
-// }
-
 
