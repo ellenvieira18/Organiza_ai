@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, model } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DATE_FORMATS, MAT_NATIVE_DATE_FORMATS, provideNativeDateAdapter } from '@angular/material/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -32,18 +32,23 @@ import { CommonModule } from '@angular/common';
 })
 export class HorarioDialog {
   value: Date | null = null;
- 
-  dialogRef = inject<MatDialogRef<HorarioDialog>>(
-    MatDialogRef<HorarioDialog>,
-  );
-  
+
+  dialogRef = inject(MatDialogRef<HorarioDialog>);
   data = inject(MAT_DIALOG_DATA);
 
   readonly date = new FormControl(new Date());
+  readonly text = model('');
 
   constructor() {
-    const data = this.data;
+    this.date.setValue(this.data.selectedDate);
+    this.text.set(this.data.selectedText);
+  }
 
-    this.date.setValue(data.selectedDate);
+  closeDialog() {
+    this.dialogRef.close({
+      date: this.date.value,
+      text: this.text(),
+      time: this.value
+    });
   }
 }

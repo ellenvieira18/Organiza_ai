@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, model, inject, signal} from '@angular/core';
+import { ChangeDetectionStrategy, Component, model, inject, signal, NgModule} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ClasseCatogotia_e, CorCategoria_e } from '../../enums/Enum';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -16,6 +16,7 @@ import {
 } from '@angular/material/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import { HorarioDialog } from '../horario-dialog/horario-dialog';
+import { NgFor } from '@angular/common';
 
 
 export interface DialogData {
@@ -26,14 +27,14 @@ export interface DialogData {
   selector: 'app-selecao-categorias',
   standalone: true,
   providers: [provideNativeDateAdapter(), provideNativeDateAdapter()],
-  imports: [MatDatepickerModule, MatTimepickerModule, MatCardModule, MatFormFieldModule, MatInputModule, FormsModule],
+  imports: [MatDatepickerModule, MatTimepickerModule, MatCardModule, MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, MatDialogModule, NgFor],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './selecao-categorias.html', 
   styleUrl: './selecao-categorias.scss'
 })
 export class SelecaoCategorias {
   value: Date | null = null;
-
+  // arrayDeTexto: string[] = [];
   categorias: string=""
   corCategoria: string=""
   classeCategoria: string=""
@@ -55,15 +56,22 @@ export class SelecaoCategorias {
 dialog = inject(MatDialog);
 
   selectedDate = model<Date | null>(null);
+  text = model(''); // <-- ADICIONE ISSO AQUI
 
   openDialog() {
     
     const dialogRef = this.dialog.open(HorarioDialog, {
       data: {selectedDate: this.selectedDate()},
+            // selectedText: this.text(), }  // <-- ENVIA O TEXTO
+
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.selectedDate.set(result);
+      if(!result) return;
+
+      this.selectedDate.set(result.date);
+      this.text.set(result.text);
+      // this.arrayDeTexto.push([...this.arrayDeTexto, this.text]); 
     });
   }
 }

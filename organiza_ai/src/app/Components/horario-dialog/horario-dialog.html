@@ -3,25 +3,31 @@
 <mat-dialog-content>
 
   <mat-form-field subscriptSizing="dynamic">
-    <mat-label>Selecione a data</mat-label>
+    <mat-label>Selecione a data:</mat-label>
     <input matInput [matDatepicker]="picker" [formControl]="date">
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
   <mat-form-field>
-  <mat-label>Selecione o horário</mat-label>
-  <input matInput
-    [matTimepicker]="timepicker"
-    [(ngModel)]="value"
-    [ngModelOptions]="{updateOn: 'blur'}">
-  <mat-timepicker #timepicker/>
-  <mat-timepicker-toggle [for]="timepicker" matSuffix/>
-</mat-form-field>
+    <mat-label>Escreva sua tarefa:</mat-label>
+    <input matInput [(ngModel)]="text" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Selecione o horário:</mat-label>
+    <input 
+      matInput
+      [matTimepicker]="timepicker"
+      [(ngModel)]="value"
+      [ngModelOptions]="{ updateOn: 'blur' }">
+    <mat-timepicker #timepicker></mat-timepicker>
+    <mat-timepicker-toggle [for]="timepicker" matSuffix></mat-timepicker-toggle>
+  </mat-form-field>
 
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-  <button matButton mat-dialog-close>CANCEL</button>
-  <button matButton [mat-dialog-close]="date.value" cdkFocusInitial>OK</button>
+  <button matButton mat-dialog-close>CANCELAR</button>
+  <button matButton (click)="closeDialog()" cdkFocusInitial>OK</button>
 </mat-dialog-actions>
