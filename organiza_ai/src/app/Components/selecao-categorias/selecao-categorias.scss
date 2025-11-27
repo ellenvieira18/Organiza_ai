@@ -11,64 +11,63 @@ mat-form-field {
 //Paleta de cores
 $branco: #ffffff;
 
-//Estrutura principal
-.tela {
+.tela{
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: $branco;
-  height: 95vh;
-  width: 95vw;
-  font-family: 'Poppins', sans-serif;
-  position: relative;
-}
-
-//Barra superior
-.topo {
-  width: 104%;
-  height: 70px;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-//Conteúdo central
-.conteudo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-
-  .title {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 40px;
-    margin-top: 60px;
+   height: 63vh;
+  // width: 95vw;
+  .topo{
+    width: 100%;
+    height: 10%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color:#6b21a8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
   }
-
-  .buttons {
+  .conteudo {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-
-    button {
-      width: 300px;
-      padding: 15px 0;
-      border: 2px solid;
-      background-color: transparent;
-      // color: $roxo-principal;
-      font-size: 1.1rem;
-      font-weight: 600;
-      border-radius: 40px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  
+    .title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 40px;
+      margin-top: 60px;
+    }
+  
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+  
+      button {
+        width: 300px;
+        padding: 15px 0;
+        border: 2px solid;
+        background-color: transparent;
+        // color: $roxo-principal;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 40px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+  
+      }
     }
   }
 }
+
+//Conteúdo central
    .button-trabalho{
     color:#c43fff;
     border-color: #c43fff;

@@ -1,17 +1,17 @@
 <h2 mat-dialog-title>Adicione sua tarefa:</h2>
 
 <mat-dialog-content>
+  
+    <mat-form-field>
+      <mat-label>Escreva sua tarefa:</mat-label>
+      <input matInput [(ngModel)]="text" />
+    </mat-form-field>
 
   <mat-form-field subscriptSizing="dynamic">
     <mat-label>Selecione a data:</mat-label>
     <input matInput [matDatepicker]="picker" [formControl]="date">
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-label>Escreva sua tarefa:</mat-label>
-    <input matInput [(ngModel)]="text" />
   </mat-form-field>
 
   <mat-form-field>
