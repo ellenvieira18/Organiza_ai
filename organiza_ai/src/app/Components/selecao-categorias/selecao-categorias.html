@@ -9,8 +9,11 @@
 
 
 <!-- <p *ngFor="let text of arrayDeTexto">Texto digitado: {{ text.text() }}</p> -->
-<p>Texto digitado: {{ text() }}</p>
-<p>Tarefa: {{selectedDate()}}</p>
+<div *ngFor="let tarefa of listaTarefas">
+    <p>Texto digitado: {{ tarefa.text }}</p>
+    <p>Tarefa: {{tarefa.date }}</p>
+
+</div>
 <button matButton="filled" color="primary" (click)="openDialog()">Adicionar tarefa</button>
 
     </div>
