@@ -18,6 +18,8 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from '@angula
 import { HorarioDialog } from '../horario-dialog/horario-dialog';
 import { NgFor } from '@angular/common';
 
+import { ChangeDetectorRef } from '@angular/core';
+
 
 export interface DialogData {
   selectedDate: Date;
@@ -41,9 +43,8 @@ export class SelecaoCategorias {
   listaTarefas: any[]=[]
 
   selected = model<Date | null>(null);
- constructor(private activateRoute: ActivatedRoute)
- 
- {
+ constructor(private activateRoute: ActivatedRoute, private cdr: ChangeDetectorRef) {
+
   this.activateRoute.params.subscribe((params) => {
     this.categorias=params['categorias']
     this.corCategoria=CorCategoria_e[this.categorias as keyof typeof CorCategoria_e]
@@ -69,10 +70,12 @@ dialog = inject(MatDialog);
 
     dialogRef.afterClosed().subscribe(result => {
       if(!result) return;
+      this.listaTarefas = [...this.listaTarefas, result];
+      this.cdr.markForCheck();
       console.log('close dialog', result);
       // this.listaTarefas=[{result}]
-      this.listaTarefas.push(result);
-      console.log('lista tarefas', this.listaTarefas);
+      // this.listaTarefas.push(result);
+      // console.log('lista tarefas', this.listaTarefas);
       // this.selectedDate.set(result.date);
       // this.text.set(result.text);
       // this.arrayDeTexto.push([...this.arrayDeTexto, this.text]); 
