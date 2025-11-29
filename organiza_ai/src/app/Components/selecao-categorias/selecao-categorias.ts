@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, model, inject, signal, NgModule} from '@angular/core';
+import { ChangeDetectionStrategy, Component, model, inject, signal, NgModule, computed} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ClasseCatogotia_e, CorCategoria_e } from '../../enums/Enum';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -19,21 +19,27 @@ import { HorarioDialog } from '../horario-dialog/horario-dialog';
 import { NgFor } from '@angular/common';
 
 import { ChangeDetectorRef } from '@angular/core';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 export interface DialogData {
   selectedDate: Date;
 }
+export interface Task {
+  completed: boolean;
+  subtasks?: Task[];
+}
 
 @Component({
   selector: 'app-selecao-categorias',
+  templateUrl: './selecao-categorias.html', 
+  styleUrl: './selecao-categorias.scss',
   standalone: true,
   providers: [provideNativeDateAdapter(), provideNativeDateAdapter()],
-  imports: [MatDatepickerModule, MatTimepickerModule, MatCardModule, MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, MatDialogModule, NgFor],
+  imports: [MatDatepickerModule, MatTimepickerModule, MatCardModule, MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, MatDialogModule, NgFor, MatCheckboxModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './selecao-categorias.html', 
-  styleUrl: './selecao-categorias.scss'
 })
+
 export class SelecaoCategorias {
   value: Date | null = null;
   // arrayDeTexto: string[] = [];
@@ -41,6 +47,7 @@ export class SelecaoCategorias {
   corCategoria: string=""
   classeCategoria: string=""
   listaTarefas: any[]=[]
+  
 
   selected = model<Date | null>(null);
  constructor(private activateRoute: ActivatedRoute, private cdr: ChangeDetectorRef) {
@@ -64,15 +71,19 @@ dialog = inject(MatDialog);
     
     const dialogRef = this.dialog.open(HorarioDialog, {
     data: {selectedDate: this.selectedDate()},
+
             // selectedText: this.text(), }  // <-- ENVIA O TEXTO 
 
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if(!result) return;
+
       this.listaTarefas = [...this.listaTarefas, result];
+     
       this.cdr.markForCheck();
       console.log('close dialog', result);
+
       // this.listaTarefas=[{result}]
       // this.listaTarefas.push(result);
       // console.log('lista tarefas', this.listaTarefas);
@@ -81,5 +92,30 @@ dialog = inject(MatDialog);
       // this.arrayDeTexto.push([...this.arrayDeTexto, this.text]); 
     });
   }
-}
 
+
+   readonly task = signal<Task>({
+      completed: false,
+     
+    });
+      readonly partiallyComplete = computed(() => {
+      const task = this.task();
+      if (!task.subtasks) {
+        return false;
+      }
+      return task.subtasks.some(t => t.completed) && !task.subtasks.every(t => t.completed);
+    });
+    
+  update(completed: boolean, index?: number) {
+      this.task.update(task => {
+        if (index === undefined) {
+          task.completed = completed;
+          task.subtasks?.forEach(t => (t.completed = completed));
+        } else {
+          task.subtasks![index].completed = completed;
+          task.completed = task.subtasks?.every(t => t.completed) ?? true;
+        }
+        return {...task};
+      });
+    }
+}

@@ -3,19 +3,26 @@
 <!-- fazer menu lateral -->
 <div class="tela">
     <div class="topo" [style.background]="corCategoria"></div>
-
+    
     <div class="conteudo">
         <div class="title" [style.color]="corCategoria">{{categorias}}</div>
 
+        <div class="container">
+            <div class="add-compromisso" [style.color]="corCategoria">
+                <h3>Adicionar compromissos e tarefas</h3>
 
-<!-- <p *ngFor="let text of arrayDeTexto">Texto digitado: {{ text.text() }}</p> -->
-<div *ngFor="let tarefa of listaTarefas">
-    <p>Texto digitado: {{ tarefa.text }}</p>
-    <p>Tarefa: {{tarefa.date }}</p>
+                <button class="btn-add" matButton="filled" color="primary" (click)="openDialog()">Adicionar</button>
+            </div>
+            
+            <div class="tarefas"[style.color]="corCategoria">
+                <h3>Compromissos e Tarefas</h3>
 
-</div>
-<button matButton="filled" color="primary" (click)="openDialog()">Adicionar tarefa</button>
-
+                <div class="lista" *ngFor="let tarefa of listaTarefas">
+                    {{ tarefa.text }} - {{ tarefa.date }}
+        
+                </div>
+            </div>
+        </div>
+        
     </div>
 </div> 
-

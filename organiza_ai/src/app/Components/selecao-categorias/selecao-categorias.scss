@@ -8,8 +8,9 @@ mat-form-field {
 
 
 
+
 //Paleta de cores
-$branco: #ffffff;
+// $branco: #ffffff;
 
 .tela{
   display: flex;
@@ -38,60 +39,119 @@ $branco: #ffffff;
     width: 100%;
   
     .title {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 40px;
-      margin-top: 60px;
+    position: fixed;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    margin-top: -180px;
     }
-  
-    .buttons {
+
+    .container{
+      top: 30px; /* distância do topo */
+      left: 50%;
+      transform: translateX(-50%);
+
+      // display: flex;
+      // justify-content: space-between;
+      // width: 80%;
+      // padding: 0 60px;
+      // z-index: 1000; /* fica sobre o conteúdo */
+
+      position: fixed;
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      width: 80%;
+      margin-top: 100px;
+      padding: 60px 100px;
+    }
+    .h3{
+       position: fixed;
+    }
+    .add-compromisso {
+      // display: flex;
+      // justify-content: space-between;
+      // width: 80%;
+      // padding: 0 60px;
+      // z-index: 1000; 
       align-items: center;
-      gap: 20px;
-  
-      button {
-        width: 300px;
-        padding: 15px 0;
-        border: 2px solid;
-        background-color: transparent;
-        // color: $roxo-principal;
-        font-size: 1.1rem;
-        font-weight: 600;
-        border-radius: 40px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-  
+      text-align: center;
+      width: 40%; 
+      text-align: left;
+      font-weight: 550;
+
+      .btn-add{
+        margin-top: 5px;
+        border: none;
+        padding: 10px 25px;
+        // font-size: 1rem;
+        border-radius: 20px; 
+        font-weight: 5500;
+         display: flex;
       }
     }
+
+    .tarefas {
+      width: 40%;
+      text-align: left;
+      font-weight: 400;
+    }
+
+
+    .lista {
+      // margin-top: 160px;  /* para evitar ficar embaixo do container fixo */
+      color: black;
+    }
+
+    // .buttons {
+    //   display: flex;
+    //   flex-direction: column;
+    //   align-items: center;
+    //   gap: 20px;
+  
+      // button {
+      //   width: 300px;
+      //   padding: 15px 0;
+      //   border: 2px solid;
+      //   background-color: transparent;
+      //   // color: $roxo-principal;
+      //   font-size: 1.1rem;
+      //   font-weight: 600;
+      //   border-radius: 40px;
+      //   cursor: pointer;
+      //   transition: all 0.3s ease;
+  
+      // }
+    // }
   }
 }
 
 //Conteúdo central
-   .button-trabalho{
-    color:#c43fff;
-    border-color: #c43fff;
-    &:hover {
-        background-color:#c43fff !important;
-        color: $branco;
-        transform: scale(1.05);
-      }
-   } 
-   .button-estudo{
-    color:#3A8EFF;
-    border-color: #3A8EFF;
-    &:hover {
-        background-color:#3A8EFF !important;
-        color: $branco;
-        transform: scale(1.05);
-      }
-   }
-   .button-pessoal{
-    color:#FF37A9;
-    border-color: #FF37A9;
-    &:hover {
-        background-color:#FF37A9 !important;
-        color: $branco;
-        transform: scale(1.05);
-      }
-   }
+  //  .button-trabalho{
+  //   color:#c43fff;
+  //   border-color: #c43fff;
+  //   &:hover {
+  //       background-color:#c43fff !important;
+  //       color: $branco;
+  //       transform: scale(1.05);
+  //     }
+  //  } 
+  //  .button-estudo{
+  //   color:#3A8EFF;
+  //   border-color: #3A8EFF;
+  //   &:hover {
+  //       background-color:#3A8EFF !important;
+  //       color: $branco;
+  //       transform: scale(1.05);
+  //     }
+  //  }
+  //  .button-pessoal{
+  //   color:#FF37A9;
+  //   border-color: #FF37A9;
+  //   &:hover {
+  //       background-color:#FF37A9 !important;
+  //       color: $branco;
+  //       transform: scale(1.05);
+  //     }
+  //  }

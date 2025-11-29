@@ -1,0 +1,16 @@
+mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* espaçamento entre os campos */
+  padding-top: 10px;
+}
+
+mat-form-field {
+  width: 100%; /* cada campo ocupa a largura inteira */
+}
+
+@media (max-width: 500px) {
+  mat-dialog-content {
+    gap: 12px; /* menor espaçamento no mobile */
+  }
+}
