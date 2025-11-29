@@ -25,10 +25,6 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 export interface DialogData {
   selectedDate: Date;
 }
-export interface Task {
-  completed: boolean;
-  subtasks?: Task[];
-}
 
 @Component({
   selector: 'app-selecao-categorias',
@@ -94,28 +90,4 @@ dialog = inject(MatDialog);
   }
 
 
-   readonly task = signal<Task>({
-      completed: false,
-     
-    });
-      readonly partiallyComplete = computed(() => {
-      const task = this.task();
-      if (!task.subtasks) {
-        return false;
-      }
-      return task.subtasks.some(t => t.completed) && !task.subtasks.every(t => t.completed);
-    });
-    
-  update(completed: boolean, index?: number) {
-      this.task.update(task => {
-        if (index === undefined) {
-          task.completed = completed;
-          task.subtasks?.forEach(t => (t.completed = completed));
-        } else {
-          task.subtasks![index].completed = completed;
-          task.completed = task.subtasks?.every(t => t.completed) ?? true;
-        }
-        return {...task};
-      });
-    }
 }

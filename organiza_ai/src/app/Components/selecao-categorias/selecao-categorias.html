@@ -18,8 +18,9 @@
                 <h3>Compromissos e Tarefas</h3>
 
                 <div class="lista" *ngFor="let tarefa of listaTarefas">
+                    <mat-checkbox class="example-margin">
                     {{ tarefa.text }} - {{ tarefa.date }}
-        
+                     </mat-checkbox>
                 </div>
             </div>
         </div>

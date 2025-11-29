@@ -42,17 +42,17 @@ export class VisaoGeral {
     return task.subtasks.some(t => t.completed) && !task.subtasks.every(t => t.completed);
   });
   
-update(completed: boolean, index?: number) {
-    this.task.update(task => {
-      if (index === undefined) {
-        task.completed = completed;
-        task.subtasks?.forEach(t => (t.completed = completed));
-      } else {
-        task.subtasks![index].completed = completed;
-        task.completed = task.subtasks?.every(t => t.completed) ?? true;
-      }
-      return {...task};
-    });
-  }
+// update(completed: boolean, index?: number) {
+//     this.task.update(task => {
+//       if (index === undefined) {
+//         task.completed = completed;
+//         task.subtasks?.forEach(t => (t.completed = completed));
+//       } else {
+//         task.subtasks![index].completed = completed;
+//         task.completed = task.subtasks?.every(t => t.completed) ?? true;
+//       }
+//       return {...task};
+//     });
+//   }
   
 }
