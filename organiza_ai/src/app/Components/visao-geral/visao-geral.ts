@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, computed, signal} from '@angular/core';
 import { Router } from '@angular/router';
+import { NgStyle } from '@angular/common'
 // import {MatDatepickerModule} from '@angular/material/datepicker';
 // import {MatCardModule} from '@angular/material/card';
 // import {provideNativeDateAdapter} from '@angular/material/core';
@@ -17,7 +18,7 @@ export interface Task {
   selector: 'app-visao-geral',
   templateUrl: './visao-geral.html',
   styleUrl: './visao-geral.scss',
-  imports: [MatCheckboxModule, FormsModule],
+  imports: [MatCheckboxModule, FormsModule, NgStyle],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
@@ -41,7 +42,7 @@ export class VisaoGeral {
     }
     return task.subtasks.some(t => t.completed) && !task.subtasks.every(t => t.completed);
   });
-  
+    
 // update(completed: boolean, index?: number) {
 //     this.task.update(task => {
 //       if (index === undefined) {
