@@ -38,6 +38,8 @@ export class HorarioDialog {
 
   readonly date = new FormControl(new Date());
   readonly text = model('');
+  readonly time = new FormControl(new Date())
+  // time: any;
 
   constructor() {
     this.date.setValue(this.data.selectedDate);
@@ -48,7 +50,7 @@ export class HorarioDialog {
     this.dialogRef.close({
       date: this.date.value,
       text: this.text(),
-      time: this.value
+      time: this.time.value
     });
   }
 }
